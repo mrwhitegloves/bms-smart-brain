@@ -12,7 +12,11 @@ function mulberry32(seed: number) {
 }
 const rnd = mulberry32(20260817);
 
-export const REPORT_DATE = "17 August 2026";
+export const REPORT_DATE = new Date().toLocaleDateString("en-IN", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
 
 export const kpis = {
   energy: { actual: 28000, expected: 25600, variancePct: 9.4 },

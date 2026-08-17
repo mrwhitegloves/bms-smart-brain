@@ -17,15 +17,12 @@ export function Shell({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-30 border-b border-border bg-surface/95 backdrop-blur">
         <div className="mx-auto flex max-w-[1400px] items-center gap-6 px-6 py-3">
           <Link to="/" className="flex items-center gap-3">
-            <span className="flex h-8 w-8 items-center justify-center rounded bg-primary text-primary-foreground num text-xs font-semibold">
-              EI
-            </span>
             <span className="leading-tight">
-              <span className="block text-sm font-semibold tracking-tight">
-                Engineering Intelligence Layer
-              </span>
-              <span className="block text-[11px] text-muted-foreground">
-                Grand Meridian Hotel · 412 keys
+              <div className="flex h-8 w-32 items-center justify-center rounded-lg bg-white">
+                <img src="/engenx-logo.png" alt="Preview" className="w-32 h-8 object-cover" />
+              </div>
+              <span className="block text-sm font-normal tracking-tight">
+                Engineering, Next Generation
               </span>
             </span>
           </Link>
@@ -68,8 +65,7 @@ export function Shell({ children }: { children: ReactNode }) {
       <main className="mx-auto max-w-[1400px] px-6 py-6">{children}</main>
       <footer className="border-t border-border bg-surface">
         <div className="mx-auto max-w-[1400px] px-6 py-6 text-xs text-muted-foreground">
-          Engineering Intelligence Layer · AI-generated inferences are probability estimates for
-          engineering validation, not confirmed physical failures.
+          EngenX — Next Generation Engineering · These AI insights are probabilistic estimates intended for engineering validation, not definitive physical failure confirmations.
         </div>
       </footer>
     </div>
