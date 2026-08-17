@@ -169,7 +169,7 @@ function Dashboard() {
                   }}
                 />
                 <Legend wrapperStyle={{ fontSize: 11 }} />
-                <Area
+                <Area isAnimationActive={false}
                   name="Occupancy influence (kWh)"
                   dataKey="occupancy"
                   stackId="d"
@@ -177,7 +177,7 @@ function Dashboard() {
                   fill="var(--info)"
                   fillOpacity={0.16}
                 />
-                <Area
+                <Area isAnimationActive={false}
                   name="Banquet / event influence (kWh)"
                   dataKey="event"
                   stackId="d"
@@ -185,7 +185,7 @@ function Dashboard() {
                   fill="var(--warn)"
                   fillOpacity={0.2}
                 />
-                <Line
+                <Line isAnimationActive={false}
                   name="AI baseline"
                   dataKey="baseline"
                   stroke="var(--muted-foreground)"
@@ -193,7 +193,7 @@ function Dashboard() {
                   strokeWidth={1.6}
                   dot={false}
                 />
-                <Line
+                <Line isAnimationActive={false}
                   name="Actual consumption"
                   dataKey="actual"
                   stroke="var(--crit)"

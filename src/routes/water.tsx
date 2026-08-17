@@ -72,8 +72,8 @@ function WaterPage() {
                 <YAxis tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} tickLine={false} axisLine={false} />
                 <Tooltip contentStyle={{ fontSize: 12, borderRadius: 6, border: "1px solid var(--border)", background: "var(--surface)" }} />
                 <Legend wrapperStyle={{ fontSize: 11 }} />
-                <Line name="Expected level (ft)" dataKey="expected" stroke="var(--muted-foreground)" strokeDasharray="4 3" strokeWidth={1.6} dot={false} />
-                <Line name="Actual level (ft)" dataKey="actual" stroke="var(--crit)" strokeWidth={2.2} dot={false} />
+                <Line isAnimationActive={false} name="Expected level (ft)" dataKey="expected" stroke="var(--muted-foreground)" strokeDasharray="4 3" strokeWidth={1.6} dot={false} />
+                <Line isAnimationActive={false} name="Actual level (ft)" dataKey="actual" stroke="var(--crit)" strokeWidth={2.2} dot={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>

@@ -127,10 +127,10 @@ function AssetDetail() {
                       background: "var(--surface)",
                     }}
                   />
-                  <Line yAxisId="l" name="Motor current (A)" dataKey="current" stroke="var(--crit)" strokeWidth={2} dot={false} />
-                  <Line yAxisId="l" name="Motor temp (°C)" dataKey="temperature" stroke="var(--warn)" strokeWidth={1.6} dot={false} />
-                  <Line yAxisId="r" name="Airflow (CMH)" dataKey="airflow" stroke="var(--info)" strokeWidth={1.6} dot={false} />
-                  <Line yAxisId="r" name="Static pressure (Pa)" dataKey="pressure" stroke="var(--ok)" strokeWidth={1.6} dot={false} />
+                  <Line isAnimationActive={false} yAxisId="l" name="Motor current (A)" dataKey="current" stroke="var(--crit)" strokeWidth={2} dot={false} />
+                  <Line isAnimationActive={false} yAxisId="l" name="Motor temp (°C)" dataKey="temperature" stroke="var(--warn)" strokeWidth={1.6} dot={false} />
+                  <Line isAnimationActive={false} yAxisId="r" name="Airflow (CMH)" dataKey="airflow" stroke="var(--info)" strokeWidth={1.6} dot={false} />
+                  <Line isAnimationActive={false} yAxisId="r" name="Static pressure (Pa)" dataKey="pressure" stroke="var(--ok)" strokeWidth={1.6} dot={false} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
