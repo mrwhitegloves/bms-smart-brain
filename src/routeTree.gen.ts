@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ArchitectureRouteImport } from './routes/architecture'
 import { Route as CopilotRouteImport } from './routes/copilot'
 import { Route as ReportRouteImport } from './routes/report'
 import { Route as WaterRouteImport } from './routes/water'
@@ -19,6 +20,11 @@ import { Route as AssetsAssetIdRouteImport } from './routes/assets/$assetId'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArchitectureRoute = ArchitectureRouteImport.update({
+  id: '/architecture',
+  path: '/architecture',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CopilotRoute = CopilotRouteImport.update({
@@ -49,6 +55,7 @@ const AssetsAssetIdRoute = AssetsAssetIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/architecture': typeof ArchitectureRoute
   '/copilot': typeof CopilotRoute
   '/report': typeof ReportRoute
   '/water': typeof WaterRoute
@@ -57,6 +64,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/architecture': typeof ArchitectureRoute
   '/copilot': typeof CopilotRoute
   '/report': typeof ReportRoute
   '/water': typeof WaterRoute
@@ -66,6 +74,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/architecture': typeof ArchitectureRoute
   '/copilot': typeof CopilotRoute
   '/report': typeof ReportRoute
   '/water': typeof WaterRoute
@@ -75,12 +84,26 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/copilot' | '/report' | '/water' | '/assets/$assetId' | '/assets/'
+    | '/'
+    | '/architecture'
+    | '/copilot'
+    | '/report'
+    | '/water'
+    | '/assets/$assetId'
+    | '/assets/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/copilot' | '/report' | '/water' | '/assets/$assetId' | '/assets'
+  to:
+    | '/'
+    | '/architecture'
+    | '/copilot'
+    | '/report'
+    | '/water'
+    | '/assets/$assetId'
+    | '/assets'
   id:
     | '__root__'
     | '/'
+    | '/architecture'
     | '/copilot'
     | '/report'
     | '/water'
@@ -90,6 +113,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArchitectureRoute: typeof ArchitectureRoute
   CopilotRoute: typeof CopilotRoute
   ReportRoute: typeof ReportRoute
   WaterRoute: typeof WaterRoute
@@ -104,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/architecture': {
+      id: '/architecture'
+      path: '/architecture'
+      fullPath: '/architecture'
+      preLoaderRoute: typeof ArchitectureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/copilot': {
@@ -146,6 +177,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArchitectureRoute: ArchitectureRoute,
   CopilotRoute: CopilotRoute,
   ReportRoute: ReportRoute,
   WaterRoute: WaterRoute,
