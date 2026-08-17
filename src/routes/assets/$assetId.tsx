@@ -114,7 +114,7 @@ function AssetDetail() {
                   <p className="label-xs">{s.label}</p>
                   <div className="mt-2 h-[150px] w-full">
                     <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={ahu04Trend} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
+                      <LineChart data={ahu04Trend} margin={{ top: 4, right: 4, left: -4, bottom: 0 }}>
                         <CartesianGrid stroke="var(--grid)" vertical={false} />
                         <XAxis
                           dataKey="day"
@@ -128,7 +128,7 @@ function AssetDetail() {
                           tick={{ fontSize: 9, fill: "var(--muted-foreground)" }}
                           tickLine={false}
                           axisLine={false}
-                          width={44}
+                          width={52}
                         />
                         <Tooltip
                           contentStyle={{
