@@ -101,41 +101,60 @@ function AssetDetail() {
           </Panel>
 
           <Panel title="14-day parameter trend" hint="Motor current, airflow, static pressure and motor temperature">
-            <div className="h-[300px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={ahu04Trend} margin={{ top: 8, right: 8, left: -18, bottom: 0 }}>
-                  <CartesianGrid stroke="var(--grid)" vertical={false} />
-                  <XAxis
-                    dataKey="day"
-                    tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
-                    tickLine={false}
-                    axisLine={{ stroke: "var(--grid)" }}
-                  />
-                  <YAxis yAxisId="l" tick={{ fontSize: 11, fill: "var(--muted-foreground)" }} tickLine={false} axisLine={false} />
-                  <YAxis
-                    yAxisId="r"
-                    orientation="right"
-                    tick={{ fontSize: 11, fill: "var(--muted-foreground)" }}
-                    tickLine={false}
-                    axisLine={false}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      fontSize: 12,
-                      borderRadius: 6,
-                      border: "1px solid var(--border)",
-                      background: "var(--surface)",
-                    }}
-                  />
-                  <Line isAnimationActive={false} yAxisId="l" name="Motor current (A)" dataKey="current" stroke="var(--crit)" strokeWidth={2} dot={false} />
-                  <Line isAnimationActive={false} yAxisId="l" name="Motor temp (°C)" dataKey="temperature" stroke="var(--warn)" strokeWidth={1.6} dot={false} />
-                  <Line isAnimationActive={false} yAxisId="r" name="Airflow (CMH)" dataKey="airflow" stroke="var(--info)" strokeWidth={1.6} dot={false} />
-                  <Line isAnimationActive={false} yAxisId="r" name="Static pressure (Pa)" dataKey="pressure" stroke="var(--ok)" strokeWidth={1.6} dot={false} />
-                </LineChart>
-              </ResponsiveContainer>
+            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              {(
+                [
+                  { key: "current", label: "Motor current (A)", color: "var(--crit)" },
+                  { key: "temperature", label: "Motor temperature (°C)", color: "var(--warn)" },
+                  { key: "airflow", label: "Airflow (CMH)", color: "var(--info)" },
+                  { key: "pressure", label: "Static pressure (Pa)", color: "var(--ok)" },
+                ] as const
+              ).map((s) => (
+                <div key={s.key} className="rounded border border-border p-3">
+                  <p className="label-xs">{s.label}</p>
+                  <div className="mt-2 h-[150px] w-full">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <LineChart data={ahu04Trend} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
+                        <CartesianGrid stroke="var(--grid)" vertical={false} />
+                        <XAxis
+                          dataKey="day"
+                          tick={{ fontSize: 9, fill: "var(--muted-foreground)" }}
+                          interval={4}
+                          tickLine={false}
+                          axisLine={{ stroke: "var(--grid)" }}
+                        />
+                        <YAxis
+                          domain={["auto", "auto"]}
+                          tick={{ fontSize: 9, fill: "var(--muted-foreground)" }}
+                          tickLine={false}
+                          axisLine={false}
+                          width={44}
+                        />
+                        <Tooltip
+                          contentStyle={{
+                            fontSize: 12,
+                            borderRadius: 6,
+                            border: "1px solid var(--border)",
+                            background: "var(--surface)",
+                          }}
+                        />
+                        <Line
+                          isAnimationActive={false}
+                          name={s.label}
+                          dataKey={s.key}
+                          stroke={s.color}
+                          strokeWidth={2}
+                          dot={false}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              ))}
             </div>
-            <p className="mt-2 text-xs text-muted-foreground">
-              Left axis: motor current & temperature · Right axis: airflow & static pressure
+            <p className="mt-3 text-xs text-muted-foreground">
+              Motor current and static pressure rising while airflow falls — the signature of increasing
+              air-side resistance.
             </p>
           </Panel>
 
