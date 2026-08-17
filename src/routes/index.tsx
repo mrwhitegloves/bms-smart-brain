@@ -159,7 +159,6 @@ function Dashboard() {
                   tickLine={false}
                   axisLine={false}
                   width={56}
-                  label={undefined}
                 />
                 <Tooltip
                   contentStyle={{
